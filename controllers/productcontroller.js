@@ -18,11 +18,13 @@ exports.editInverntoryStock = asyncErrorHandler(async (req, res, next) => {
 
 exports.createProduct = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
+  console.log(req.file);
   let uploadedFile = await cloudinary.uploader.upload(req.file.path, {
     folder: "productsImages",
     resource_type: "image",
   });
   const { originalName } = req.file;
+
   const { secure_url, bytes, format } = uploadedFile;
   const product = new Product(req.body);
   product.Admin = user._id;

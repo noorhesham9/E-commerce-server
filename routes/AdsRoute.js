@@ -5,7 +5,14 @@ const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
 const userController = require("./../controllers/UserController");
 const adsControlller = require("../controllers/AdsController");
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Destination folder
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname); // Unique filename
+  },
+});
 
 const upload = multer({ storage });
 

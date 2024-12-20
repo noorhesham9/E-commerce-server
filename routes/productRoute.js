@@ -4,10 +4,13 @@ const productcontroller = require("./../controllers/productcontroller");
 const usercontroller = require("../controllers/UserController");
 const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
-const storage = multer.memoryStorage();
-let upload = multer({
-  storage,
+const storage = multer.diskStorage({
+  destination: "./uploads/images/products",
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
+let upload = multer({ storage: storage });
 router
   .route("/createProduct")
   .post(
