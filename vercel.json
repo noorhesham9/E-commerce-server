@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     }
   ],
-  "routesd": [
+  "routes": [
     {
       "src": "/(.*)",
       "dest": "/server.js"
