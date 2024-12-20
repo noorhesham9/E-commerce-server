@@ -4,12 +4,7 @@ const productcontroller = require("./../controllers/productcontroller");
 const usercontroller = require("../controllers/UserController");
 const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
-const storage = multer.diskStorage({
-  destination: "./public/images",
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
+const storage = multer.memoryStorage();
 let upload = multer({
   storage,
 });

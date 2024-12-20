@@ -5,12 +5,7 @@ const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
 const userController = require("./../controllers/UserController");
 const adsControlller = require("../controllers/AdsController");
-const storage = multer.diskStorage({
-  destination: "./public/images",
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({ storage });
 
