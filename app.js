@@ -32,9 +32,8 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 cloudinary.config({
   cloud_name: process.env.cloudName,
-
   api_key: process.env.APIKey,
-  api_secret: process.env.APISecret,
+  api_secret: "Anhs8KXaNrHJwRZ5IQXYyiPf8h4",
 });
 
 app.get("/", (req, res) => {
