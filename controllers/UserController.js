@@ -31,7 +31,7 @@ exports.register = asyncErrorHandler(async (req, res, next) => {
       secure: true,
       httpOnly: true,
     })
-    .json({ data: newUser, msg: "User registered successfully" });
+    .json({ data: newUser, token: token, msg: "User registered successfully" });
 });
 
 exports.login = asyncErrorHandler(async (req, res, next) => {
@@ -62,7 +62,7 @@ exports.login = asyncErrorHandler(async (req, res, next) => {
       secure: true,
       httpOnly: true,
     })
-    .json({ data: user, msg: "User logged in successfully" });
+    .json({ data: user, token: token, msg: "User logged in successfully" });
 });
 
 exports.deleteUser = asyncErrorHandler(async (req, res, next) => {
