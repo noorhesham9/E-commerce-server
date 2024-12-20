@@ -27,10 +27,8 @@ exports.register = asyncErrorHandler(async (req, res, next) => {
   res
     .status(201)
     .cookie("jwt", token, {
-      HttpOnly: true,
-      sameSite: "none",
+      sameSite: "restrict",
       secure: true,
-      maxAge: 360000,
     })
     .json({ data: newUser, msg: "User registered successfully" });
 });
@@ -59,9 +57,7 @@ exports.login = asyncErrorHandler(async (req, res, next) => {
   res
     .status(200)
     .cookie("jwt", token, {
-      HttpOnly: true,
-      sameSite: "none",
-      maxAge: 360000,
+      sameSite: "restrict",
       secure: true,
     })
     .json({ data: user, msg: "User logged in successfully" });
