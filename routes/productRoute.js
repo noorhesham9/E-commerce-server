@@ -5,7 +5,9 @@ const usercontroller = require("../controllers/UserController");
 const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
 const storage = multer.diskStorage({
-  destination: "./uploads/images/products",
+  destination: (req, file, cb) => {
+    cb(null, "/tmp"); // Use the writable /tmp directory
+  },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
