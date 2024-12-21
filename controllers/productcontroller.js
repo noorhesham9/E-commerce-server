@@ -78,13 +78,17 @@ exports.getAllproduct = asyncErrorHandler(async (req, res, next) => {
 exports.setReview = asyncErrorHandler(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).json({ msg: "Product not found" });
-  // if (
-  //   product.reviews.find((e) => e.userId.toString() === req.user._id.toString())
-  // ) {
-  //   return res
-  //     .status(400)
-  //     .json({ msg: "You have already reviewed this product" });
-  // }
+  if (
+    product.reviews.find((e) => e.userId.toString() === req.user._id.toString())
+  ) {
+    return res
+      .status(400)
+      .json({ msg: "You have already reviewed this product" });
+  }
+  if (!product.reviews) {
+    product.reviews = [];
+    product.avgRating = 0;
+  }
   const avgRating =
     (product.reviews.reduce((acc, curr) => acc + +curr.rating, 0) +
       req.body.rating) /
