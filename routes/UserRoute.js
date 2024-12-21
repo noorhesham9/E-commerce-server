@@ -128,7 +128,7 @@ router
     usercontroller.reActiveUserForUser
   );
 router
-  .route("getAllUser")
+  .route("/getAllUser")
   .get(
     usercontroller.protect,
     usercontroller.isAdminforInteriorUse,
