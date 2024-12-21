@@ -99,7 +99,7 @@ const BroductSchema = new mongoose.Schema(
         },
         comment: {
           type: String,
-          minlength: 10,
+          minlength: 2,
           maxlength: 1000,
         },
         createdAt: {
