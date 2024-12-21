@@ -127,5 +127,12 @@ router
     usercontroller.isAdminforInteriorUse,
     usercontroller.reActiveUserForUser
   );
+router
+  .route("getAllUser")
+  .get(
+    usercontroller.protect,
+    usercontroller.isAdminforInteriorUse,
+    usercontroller.getAllUsers
+  );
 
 module.exports = router;
