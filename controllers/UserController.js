@@ -346,7 +346,7 @@ exports.AddMoneyToWallet = asyncErrorHandler(async (req, res, next) => {
     });
   }
   const amount = req.body.amount;
-  user.walletbalance += amount;
+  user.walletbalance = +user.walletbalance + +amount;
   await user.save();
   res.status(200).json({ msg: "Money added to wallet", data: user });
 });
