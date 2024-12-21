@@ -267,7 +267,15 @@ exports.addToCart = asyncErrorHandler(async (req, res, next) => {
       productId: product._id,
       quantity: req.body.quantity,
       price: product.price,
+      Name: product.Name,
+      total: req.body.quantity * product.price,
     });
+    const tt = 0;
+    const tootal = productArray.forEach((p) => {
+      tt = tt + p.total;
+      return tt;
+    });
+    userCart.totalPrice = tootal;
     userCart.products = productArray;
     await userCart.save();
     res.status(200).json({ msg: "Product added to cart", data: userCart });

@@ -18,9 +18,21 @@ const cartschame = new mongoose.Schema(
         price: {
           type: Number,
         },
+        total: {
+          type: Number,
+          required: true,
+        },
+        Name: {
+          type: String,
+          required: true,
+        },
       },
     ],
-    totalPrice: Number,
+    totalPrice: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
