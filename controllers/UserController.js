@@ -322,7 +322,7 @@ exports.addToWishList = asyncErrorHandler(async (req, res, next) => {
 
 exports.getwishList = asyncErrorHandler(async (req, res, next) => {
   const user = req.user;
-  const wishList = await Product.find({ _id: { $in: user.wishList } });
+  const wishList = await Product.find({ _id: { $in: user.Wishlist } });
   res.status(200).json({ data: wishList });
 });
 
