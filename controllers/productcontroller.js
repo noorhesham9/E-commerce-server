@@ -96,7 +96,7 @@ exports.setReview = asyncErrorHandler(async (req, res, next) => {
     rating: req.body.rating,
   });
   product.avgRating = avgRating;
-  product.save();
+  await product.save();
   res.status(200).json({ data: product });
 });
 
