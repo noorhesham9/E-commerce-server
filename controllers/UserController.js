@@ -268,14 +268,14 @@ exports.addToCart = asyncErrorHandler(async (req, res, next) => {
       quantity: req.body.quantity,
       price: product.price,
       Name: product.Name,
-      total: req.body.quantity * product.price,
+      totalForProduct: +req.body.quantity * +product.price,
     });
-    const tt = 0;
-    const tootal = productArray.forEach((p) => {
-      tt = tt + p.total;
+    let tt = 0;
+    productArray.forEach((p) => {
+      tt = tt + +p.totalForProduct;
       return tt;
     });
-    userCart.totalPrice = tootal;
+    userCart.totalPrice = tt;
     userCart.products = productArray;
     await userCart.save();
     res.status(200).json({ msg: "Product added to cart", data: userCart });
